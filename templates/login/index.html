@@ -1,0 +1,66 @@
+{#templates/login/index.html#}
+{% extends 'shared/base.html' %}
+{% block title %}主页{% endblock %}
+{% block content %}
+    {% if request.session.is_login %}
+    <div id = 'cont'> <!-- Container-->
+		<div class="inbox">
+			<div class="t1">
+				<img src="data:image/png;base64,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" alt="">
+			</div>
+			<div class="t1">
+				<div>
+					<span class='t2'>{{ username }} </span>
+				</div>
+				<div>
+					用户名
+				</div>
+			</div>
+		</div>
+		<div class="inbox">
+			<div class="t1">
+				<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAFe0lEQVRYR+2YbWxTZRTH/+e5bTc6N8AxnDJjBBlIAhECOltBGiRzGMCMXkYQ1IkEWCdxIAGNH4ox+sEgCVk3BtGY8Da42xAxBtC9oLRbVEBENAug+2CAMSAzBLZ2vc8xt6xkG93WlZr0gydp0tz7nP/zu+c8b+chxMkay5x5klEOIguxXG9zVe+LhzTFQ8TQ8HrUqwAyuvU6KAPptsVax/3qxwXQ7XaLuRnn9J4wiiKzc1ZXn08IQHa7hS8RAesr5o8yB5PnEPNUBm2UzKGAEYV+FcTk1bv072aV1FyONZIxpdhbmj8LQlkPRh4A8yCdG6mvI+BTm0s7MlTQIQE2bcvP0k2KB4wFvTpidIDQDEIrGAbQSAKyGUjvA1SvKHLVUMZm1IDe7eqzpKOGgcxQp4wAiHeDqCYwrK3WUdjQ2ROGAfJ5CqYDciEDKyjsB24nIZbY1hw4Gk00owL0elQng3cTKKl7jO3t0vH+829pf0XTyZlPlqfcHNa5nog3AmQFECSGy1as7RjMf1BAX7n6NEs0ABgGsJ9ALptL+2ww4UjvfeWLpkopDhHwqAGpmMRLOav2HxtIa0DAHz1qZhdwEsAjRAhA8jxbcVVtLHBhn3qPmmlhnABhHDO3C6IZNpd2oT/NAQG9HrUSQEEorYJW2NYc+Px+4MK+329XJyk6GgGkgVFnL9bmDBmwsbRgmiT5s8EGQrW9SHPGAy6s4S0rKATL7g/mXLurKmKq+42g1+PcBdAyAH4LyUkziqr/jCdg9+7zC4DJIBy1F2kvRtKPCHi4Yr41PZh8lYEUgPbYXQcM0LsW2nsfOjMKXZZUFsFkKQWTSXb6pfxnTvHBG2QsQlGYr0xdyow9AHTFYhqTs3Jfa1+3iIAnStW5RAiFXFH45ZzVVYeM/99sy0t6wGSdIGAaw8ymSAwsERAKt3RdbbvocDcEB+Js2v1Kmt4eaAPBwuBlz7mqDNheFhHQV+Z8l5k+AtAVsKakOQq/6Kzflp9lNpkn9wfWV1hA+gMd5lOOd/ZdGwjS51G/ZeAFAm+1uarWRQXoLVu8E8xvAvjD7tImHd++dLzQgxOjyFqvJoJYBoL6Gcfamr/78/WWqVvAWAfGV/ZibWF0gB5VA+AkQoM/qC83KaapQ4ULt2diaepEo22ddiOShs+jbmLgYyIctxVps6MDLFUPgbCAwLWSlC3RprW/j1BY3D52rbLe7Ybs28ZX5nybmbYCaLS7NNsQAXFSB22ONXq9R7vp3MyivfcsVfcLeEoHueMCKMTNmWsqjT29lyUOIIDbt5PqcjfsutWTMKEAg+CfHC7tSuICBgJnHSVftiQsoNDpd/va/Rf/B4x1Vid8BIMBcdZRUpm4YzDhZ3Fir4Px2El85eoYZnIQcwkD0wC0EPhgNJNCWFIsiskSOsTqwUBQBm4FevoxiVZiec8djWTKJcJSABfA+EAK6Z3Zo7zodWD1lalHmJEbDdB/2Oa03aUZwQlZL0BvuXMJJL0BQNw9zzEUAkb2B5Q8InM0CZMl4nuWekf7pUtg3AANXqfcqWW4yuaqqogI2B/ED6UF2SCe0Pd9ctqDlifnvbeCiCjYeet6W/OJJobOo8bbp1uswzMB4tbfajeNnfXar7FGfNCrj7Bw0878LL/fNEUQlPCz4Q9PTBs3e2Wo4rt5ufn0+YYdRjGOx+2vPpX+2LRnzNbh1xWLdTMRxVyyRg1odFzvfj1ZGe3PZqlnGaBCMYkpiz4sFIo5CZDBjvYrLWDSUzPGpltSR3YAwpgoG4go5rvqIQHeHZdut6gd0ZxhNQdTs/M25KSOfmI+KYquKJaAMCf7e6TzMBF9HWt675kksQoxcw4Qmv137g4Bo9SsI6L6WDXDfv8CYeCsR1U4EAoAAAAASUVORK5CYII=" alt="">
+			</div>
+			<div class="t1">
+				<div>
+					<span class='t2'>{% if res %} <div style="color:green"> <b>正常</b> </div> {% else %} <div style="color:red"> <b>失效</b> </div>  {% endif %}</span>
+				</div>
+				<div>
+					Cookie <a href="/config/" style="font-size:50%;">[更新]</a>
+				</div>
+			</div>
+		</div>
+		<div class="inbox">
+			<div class="t1">
+				<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAADFUlEQVRYR+1YS0hUYRT+znUcqzGzxBBEaZEoJlGBWWaTQRgSJcGMm7ZtzMcibKER6mZcBC7EadmmSBuVFj1EMZLKobBGKE3KlF5iMPmgHMN53BN3Rkqqm7/3ckcDZ/2d833/d+aec/6fsMZ/tMb1YV2g3gqFHey+XGSJtyTUgnEGoDQAkt7EGuNlInxg8I0531fH8Qs9PnI32TciDg8YyNOY1JAwAp5iAUep31laD3DdIssAgB6AA4awLpuUYgEUAciNQKmB+p32UQA7AR7MT6ZcKm0PLZvHQAC77DFuLw8AtBfAW0Wg4paJmRsLKjpqDeQWTv24xeYgohoAQUUgRyK5/lB5R4NwFgOB/U5bHUD14SL/NwKZuY8IfQYaI5yaGYVEVPibg8LxUQUuKXFUeYXJfs7ih832ZFMs7QvJMAtHrwAYI8EfDLDHWtXuXUFYZFnobTmdZJZMB4jJ0BHHxLJfDj45VnFrSlTk2i/xrzYjeqbo4pY6+BLgoejQ0wLA79S4VNoMt8qQWqMhkGX4rZWubjUutUkSFmjesMW0OTUziUDC27YEiWc+v54J+Kb9IgeMkYjzy27e0SQw52RtiTk+KVWEaCkm6J+fedF5SbgCh8tdtzUJTM+zZyekZGYCkrCDRMy+qYmP44+uPhM9mGaBogR6cesCV83BHfttWZaUzAzCn3dmBsvTY8+HJoe7VXuYqHDNJc45dbHEbNmm+hV/n514M9LV1CsqRA2nWWDcpq2xiWm7k0F/6YMsy1/GPd5QYC6oR6CyNFjPtd/V1Gb0EIvGMkvz1oq2+2tWoCyFPh0p6xwUFaiMp1hmdjFJ10Vd0IMzc8Cd94+d0N1S6mBi5doJcjvtIwxkgTAWAlUTw9CLO8nSZEFlm+rEuddcHJdoivcwI5sIr8h9xVbDTI6IIzwKkAdgWY9D6muUsrPTOFhW+cjCTx8nAOxZ1FNNwy67edYbvm4eNEKUjpw9+d5dxeGFQHnh4jicJ+AsA+mr+Pym/L3eA3Rte+hbY0ZV14LwxqLDCV2h6wJ12ae0Gb0JjI7/AbvAizxoOiaPAAAAAElFTkSuQmCC" alt="">
+			</div>
+			<div class="t1">
+				<div>
+					<span class='t2' id="account">0 </span>元
+				</div>
+				<div>
+					总收益
+				</div>
+			</div>
+		</div>
+	</div>
+
+        <div id="tbdiv" align="center">
+        <table id="finance_tb" style="width:100%;">
+        <caption>任务明细</caption>
+            <thead>
+            <tr>
+                <th>时间</th>
+                <th>任务</th>
+                <th>收益</th>
+            </tr>
+            </thead>
+        </table>
+        </div>
+    </div>
+    {% else %}
+    <div style="margin:0px auto; width:70%;" align="center">
+    <h1>请先<a href="/login/">登陆</a></h1>
+</div>
+    {% endif %}
+{% endblock %}

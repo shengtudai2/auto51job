@@ -1,0 +1,45 @@
+{% extends 'shared/base.html' %}
+{% block title %}配置中心{% endblock %}
+
+{% block content %}
+
+<div class="container">
+        <div class="col-md-4 col-md-offset-4">
+            <form class='form-login' action="" method="post">
+            {% csrf_token %}
+            <h2 class="text-center">创建配置</h2>
+             <div class="form-group">
+             {{ config_form.username.label_tag }}
+             {{ config_form.username }}
+             </div>
+
+             <div class="form-group">
+                 {{ config_form.openId.label_tag }} <span style="color:red;">(第一次设置后一般不需要更改)</span>
+             {{ config_form.openId }}
+             </div>
+                <a href="http://fafadai.neww.ga/web/#/6/25">教程:获取openId和token</a>
+             <div class="form-group">
+             {{ config_form.token.label_tag }}
+             {{ config_form.token }}
+             </div>
+
+             <div class="form-group">
+             {{ config_form.notify.label_tag }}
+             {{ config_form.notify }}
+             </div>
+
+             <div class="form-group">
+             {{ config_form.qq.label_tag }}
+             {{ config_form.qq }}
+             </div>
+
+            <button type="reset" class="btn btn-default pull-left">重置</button>
+            <button type="submit" class="btn btn-primary pull-right">提交</button>
+            </form>
+        <div>
+</div>
+
+{% endblock %}
+
+
+

@@ -1,0 +1,130 @@
+{% load static %}
+
+<html lang="zh-CN">
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>{% block title %}base{% endblock %}</title>
+ 
+    <!-- Bootstrap -->
+    <link href="{% static 'bootstrap-3.4.1-dist/css/bootstrap.min.css' %}" rel="stylesheet">
+ 
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.4.1/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+      <style>
+	 #tbdiv{
+		color : #0000ff;
+		width : 70%;
+		min-width: 1000px;
+		margin: 10px auto;
+	 }
+
+	 #cont {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			min-width: 1000px;
+			background-color:#F8F8F8;
+			margin: 0px auto;
+			margin-bottom: 40px;
+			padding: 10px;
+
+		}
+
+		div.divin {
+			border-radius: 80px;
+			width: 300px;
+			height: 100px;
+			margin: 2px auto;
+			background-color: wheat;
+		}
+
+
+		h1 {
+			position: absolute;
+			left:50%;
+			bottom: 50%;
+		}
+
+		.inbox {
+    		line-height: 20px;
+    		font-size: 20px;
+			display: flex;
+			margin: 0 auto;
+			align-items: center;
+			justify-content: center;
+		}
+		.t1 {
+			margin: 0 auto;
+			line-height: 1.2;
+			color:#00235A;
+		}
+		.t2 {
+			color: #E6BE37;
+			font-size:150%;
+		}
+</style>
+    {% block css %}{% endblock %}
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#my-nav" aria-expanded="false">
+            <span class="sr-only">切换导航条</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">auto51job</a>
+        </div>
+ 
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="my-nav">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/index/">主页</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+              {% if request.session.is_login %}
+                  <li><a href="#">当前在线：{{ request.session.user_name }}</a></li>
+                  <li><a href="/logout/">注销</a></li>
+              {% else %}
+                  <li><a href="/login/">登录</a></li>
+                  <li><a href="/register/">注册</a></li>
+              {% endif %}
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
+    {% block content %}{% endblock %}
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+
+    <script src="{% static 'js/jquery-3.5.1.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/dataTables.css' %}">
+
+   <!--<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.15/css/jquery.dataTables.css">-->
+    <!-- DataTables -->
+   <script src="{% static 'js/dataTables.js' %}"></script>
+   <!-- <script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script> -->
+    <script src="{% static 'js/ajax.js' %}"></script>
+    <script src="{% static 'js/table.js' %}"></script>
+    <script src="{% static 'js/account.js' %}"></script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static 'bootstrap-3.4.1-dist/js/bootstrap.min.js' %}"></script>
+
+
+  </body>
+</html>
